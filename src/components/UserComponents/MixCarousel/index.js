@@ -40,8 +40,8 @@ const mixArray = [
 
 const MixCarousel = ({ className, dark }) => {
   const [swiper, setSwiper] = useState(null);
-  const [vModal, setvModal] = useState(false);
-  const [videoId] = useState("0r6C3z3TEKw");
+  // const [vModal, setvModal] = useState(false);
+  // const [videoId] = useState("0r6C3z3TEKw");
 
   const goNext = () => {
     if (swiper !== null) {
@@ -98,7 +98,7 @@ const MixCarousel = ({ className, dark }) => {
                           </Link>
                         </div>
                         <span
-                          onClick={() => setvModal(true)}
+                          // onClick={() => setvModal(true)}
                           className={`tranding ${i % 2 ? "left" : ""}`}
                         >
                           <FontAwesome name={item.icon} />

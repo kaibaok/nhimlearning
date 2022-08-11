@@ -4,7 +4,7 @@ import MainMenu from "src/components/UserComponents/MainMenu";
 import FooterArea from "src/components/UserComponents/FooterArea";
 import { ToastContainer } from "react-toastify";
 import ScrollTopButton from "src/components/UserComponents/ScrollTopButton";
-import { useSpeechSynthesis } from "react-speech-kit";
+import { useSpeechSynthesis } from "src/components/AdminComponents/commons/Speech";
 
 const UserLayout = (props) => {
   const { component: Component } = props;

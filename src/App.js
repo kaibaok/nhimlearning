@@ -12,7 +12,6 @@ import HomePage from "./views/user/HomePage";
 import EnglishBooks from "./views/user/EnglishBooks";
 import EnglishBook from "./views/user/EnglishBooks/EnglishBook";
 import EnglishBookAdmin from "./views/admin/learning/EnglishBooks";
-import LoadingBar from "react-top-loading-bar";
 import Lesson from "./views/user/EnglishBooks/Lesson";
 import AdminLogin from "./views/admin/login/AdminLogin";
 import Logout from "./views/admin/logout/Logout";
@@ -59,7 +58,6 @@ function App(props) {
 
   return (
     <>
-      <LoadingBar progress={"50"} shadow={true} ref={ref} />
       <BrowserRouter history={history}>
         <Suspense>
           <Routes>

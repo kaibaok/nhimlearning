@@ -20,7 +20,7 @@ function EditQuestion() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [orderNumber, setOrderNumber] = useState(0);
-  const [question, setQuestion] = useState(null);
+  // const [question, setQuestion] = useState(null);
   const [questionType, setQuestionType] = useState(1);
   const [types, setTypes] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -76,7 +76,7 @@ function EditQuestion() {
         if (question) {
           setName(question?.name);
           setDescription(question?.description ?? "");
-          setQuestion(question);
+          // setQuestion(question);
           setQuestionType(question?.question_type_id ?? 0);
           setOrderNumber(question?.order_number ?? 0);
           // load list answers

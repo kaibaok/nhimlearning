@@ -13,7 +13,7 @@ import "swiper/css";
 import "react-toastify/dist/ReactToastify.css";
 // FETCH
 import LoginFetch from "src/fetch/LoginFetch";
-import AppAuth from "src/AppAuth";
+// import AppAuth from "src/AppAuth";
 import { Button } from "src/components/AdminComponents/commons";
 
 function AdminRegister(props) {
@@ -21,7 +21,7 @@ function AdminRegister(props) {
   const [password, setPassword] = useState("Abcd1234");
   const [passwordConfirmation, setPasswordConfirmation] = useState("Abcd1234");
   const [email, setEmail] = useState("test@yopmail.com");
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function AdminRegister(props) {
   }, [navigate]);
 
   const register = async () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     await LoginFetch.register({
       name: name,
       password: password,
@@ -59,7 +59,7 @@ function AdminRegister(props) {
         console.log(ex);
         showToast("Register Error", true);
       });
-    setIsLoading(false);
+    // setIsLoading(false);
   };
 
   const showToast = (title, error) => {

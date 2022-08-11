@@ -10,7 +10,6 @@ import EnglishBookFetch from "src/fetch/EnglishBookFetch";
 import english_book from "src/assets/images/common/english_book.jpg";
 
 function EnglishBooks(props) {
-  const { barLoading } = props;
   const [books, setBooks] = useState();
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,7 +40,6 @@ function EnglishBooks(props) {
 
   useEffect(() => {
     const loadEnglishBooks = async (page = 1, limit = 20) => {
-      barLoading.current.continuousStart();
       await EnglishBookFetch.getAll({ page: page, limit: limit })
         .then((json) => {
           setBooks(json?.data);
@@ -51,12 +49,11 @@ function EnglishBooks(props) {
         .catch((ex) => {
           console.log(ex);
         });
-      barLoading.current.complete();
     };
 
     if (nextPage === 1) loadEnglishBooks();
     else loadEnglishBooks(nextPage);
-  }, [nextPage, barLoading]);
+  }, [nextPage]);
 
   return (
     <Fragment>

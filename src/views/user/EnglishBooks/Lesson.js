@@ -12,7 +12,7 @@ import AppStore from "src/fetch/AppFetch";
 import { Button } from "src/components/AdminComponents/commons";
 
 const EnglishBook = (props) => {
-  const { barLoading, voices, speak, speaking } = props;
+  const { voices, speak, speaking } = props;
   let { id, english_book_id } = useParams();
 
   console.log(id);
@@ -64,17 +64,14 @@ const EnglishBook = (props) => {
 
   useEffect(() => {
     const loadEnglishBook = async (english_book_id) => {
-      barLoading.current.continuousStart();
       await EnglishBookFetch.getEnglishBook(english_book_id)
         .then(async (json) => {
           setBook(json?.data);
         })
         .catch((ex) => console.log(ex));
-      barLoading.current.complete();
     };
 
     const loadLesson = async () => {
-      barLoading.current.continuousStart();
       await LessonFetch.getLesson(id)
         .then(async (json) => {
           const lessonData = json?.data;
@@ -85,11 +82,9 @@ const EnglishBook = (props) => {
           }
         })
         .catch((ex) => console.log(ex));
-      barLoading.current.complete();
     };
 
     const loadQuestions = async ({ page = 1, limit = 1, lesson_id }) => {
-      barLoading.current.continuousStart();
       await LessonDetailsFetch.getAll({
         lesson_id: lesson_id,
         page: page,
@@ -109,12 +104,11 @@ const EnglishBook = (props) => {
           setQuestions(details);
         })
         .catch((ex) => console.log(ex));
-      barLoading.current.complete();
     };
 
     if (nextPage === 1) loadLesson();
     else loadQuestions({ page: nextPage, lesson_id: id });
-  }, [barLoading, id, nextPage, english_book_id]);
+  }, [id, nextPage, english_book_id]);
 
   return (
     <Fragment>
@@ -159,6 +153,7 @@ const EnglishBook = (props) => {
                                 setIsVisibleVoiceDialog(true);
                               }}
                               icon={<em class="icon ni ni-mic"></em>}
+                              className="btn btn-primary d-none d-md-inline"
                             />
                           </div>
                         </div>

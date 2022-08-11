@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import FontAwesome from "../uiStyle/FontAwesome";
 
 const ScrollTopButton = () => {
   const [sticky, setSticky] = useState("");
@@ -23,7 +22,7 @@ const ScrollTopButton = () => {
   return (
     <div className={sticky}>
       <div className="up_btn up_btn1" onClick={() => scrollTop()}>
-        <FontAwesome name="angle-double-up" />
+        <em class="icon ni ni-chevrons-up"></em>
       </div>
     </div>
   );

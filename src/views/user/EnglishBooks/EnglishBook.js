@@ -9,7 +9,6 @@ import LessonsList from "./LessonsList";
 import english_book from "src/assets/images/common/english_book.jpg";
 
 const EnglishBook = (props) => {
-  const { barLoading } = props;
   let { id } = useParams();
   const [englishBook, setEnglishBook] = useState();
   const [lessons, setLessons] = useState();
@@ -61,7 +60,6 @@ const EnglishBook = (props) => {
 
   useEffect(() => {
     const loadEnglishBook = async () => {
-      barLoading.current.continuousStart();
       await EnglishBookFetch.getEnglishBook(id)
         .then(async (json) => {
           const book = json?.data;
@@ -71,11 +69,9 @@ const EnglishBook = (props) => {
           }
         })
         .catch((ex) => console.log(ex));
-      barLoading.current.complete();
     };
 
     const loadLessons = async ({ page = 1, limit = 20, english_book_id }) => {
-      barLoading.current.continuousStart();
       await EnglishBookDetailsFetch.getAll({
         english_book_id: english_book_id,
         page: page,
@@ -94,12 +90,11 @@ const EnglishBook = (props) => {
           setLessons(details);
         })
         .catch((ex) => console.log(ex));
-      barLoading.current.complete();
     };
 
     if (nextPage === 1) loadEnglishBook();
     else loadLessons({ page: nextPage, english_book_id: id });
-  }, [barLoading, id, nextPage]);
+  }, [id, nextPage]);
 
   return (
     <Fragment>
