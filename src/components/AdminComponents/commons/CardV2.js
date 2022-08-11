@@ -17,6 +17,7 @@ function Card(props) {
             height="100%"
             url={props.video}
             controls={true}
+            alt="video"
           />
         </div>
       )}

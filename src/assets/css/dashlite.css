@@ -24,6 +24,7 @@
 * 07. PREVIEWS
 ---------------------- **/
 /** 01. FONTS */
+/*  eslint-disable-next-line */
 @font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto-Light.eot");
