@@ -1,4 +1,4 @@
-import AppConfig from "src/AppConfig";
+import AppConfig from "../AppConfig";
 import AbstractFetch from "./AbstractFetch";
 import AppStore from "./AppFetch";
 

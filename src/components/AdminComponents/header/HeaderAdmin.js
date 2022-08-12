@@ -1,4 +1,4 @@
-import logo from "src/assets/images/logo/logo.png";
+import logo from "../../../assets/images/logo/logo.png";
 import { Link } from "react-router-dom";
 
 const menus = [

@@ -1,4 +1,4 @@
-import AppConfig from "src/AppConfig";
+import AppConfig from "../AppConfig";
 import AbstractFetch from "./AbstractFetch";
 import AppStore from "./AppFetch";
 
@@ -23,7 +23,6 @@ class WeatherFetch extends AbstractFetch {
         body: JSON.stringify({
           url: url,
         }),
-        
       }).then((response) => {
         return response.json();
       });

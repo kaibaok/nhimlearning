@@ -1,38 +1,37 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 // COMPONENT
-// import AdminLayout from "./layout/AdminLayout";
+import AdminLayout from "./layout/AdminLayout";
 // LIB
 import history from "./lib/history";
 // FETCH
 import AppAuth from "./AppAuth";
+import PageNotFound from "./views/PageNotFound";
+import UserLayout from "./layout/UserLayout";
 import HomePage from "./views/user/HomePage";
-// import PageNotFound from "./views/PageNotFound";
-// import UserLayout from "./layout/UserLayout";
-// import HomePage from "./views/user/HomePage";
-// import EnglishBooks from "./views/user/EnglishBooks";
-// import EnglishBook from "./views/user/EnglishBooks/EnglishBook";
-// import EnglishBookAdmin from "./views/admin/learning/EnglishBooks";
-// import Lesson from "./views/user/EnglishBooks/Lesson";
-// import AdminLogin from "./views/admin/login/AdminLogin";
-// import Logout from "./views/admin/logout/Logout";
-// import AdminRegister from "./views/admin/register/AdminRegister";
-// import Media from "./views/widgets/media/Media";
-// import LessonAdmin from "./views/admin/learning/Lesson";
-// import QuestionAdmin from "./views/admin/learning/Question";
-// import QuestionTypeAdmin from "./views/admin/learning/QuestionType";
-// import EditQuestionType from "./views/admin/learning/EditQuestionType";
-// import EditLesson from "./views/admin/learning/EditLesson";
-// import EditEnglishBook from "./views/admin/learning/EditEnglishBook";
-// import EditQuestion from "./views/admin/learning/EditQuestion";
-// import Devices from "./views/admin/devices/Devices";
-// import NewEditDevice from "./views/admin/devices/NewEditDevice";
-// import Areas from "./views/admin/areas/Areas";
-// import EditArea from "./views/admin/areas/EditArea";
-// import TypesDevice from "./views/admin/types_devices/TypesDevice";
-// import EditTypesDevice from "./views/admin/types_devices/EditTypesDevice";
-// import Chat from "./views/admin/chat/Chat";
-// import Home from "./views/admin/home/Home";
+import EnglishBooks from "./views/user/EnglishBooks";
+import EnglishBook from "./views/user/EnglishBooks/EnglishBook";
+import EnglishBookAdmin from "./views/admin/learning/EnglishBooks";
+import Lesson from "./views/user/EnglishBooks/Lesson";
+import AdminLogin from "./views/admin/login/AdminLogin";
+import Logout from "./views/admin/logout/Logout";
+import AdminRegister from "./views/admin/register/AdminRegister";
+import Media from "./views/widgets/media/Media";
+import LessonAdmin from "./views/admin/learning/Lesson";
+import QuestionAdmin from "./views/admin/learning/Question";
+import QuestionTypeAdmin from "./views/admin/learning/QuestionType";
+import EditQuestionType from "./views/admin/learning/EditQuestionType";
+import EditLesson from "./views/admin/learning/EditLesson";
+import EditEnglishBook from "./views/admin/learning/EditEnglishBook";
+import EditQuestion from "./views/admin/learning/EditQuestion";
+import Devices from "./views/admin/devices/Devices";
+import NewEditDevice from "./views/admin/devices/NewEditDevice";
+import Areas from "./views/admin/areas/Areas";
+import EditArea from "./views/admin/areas/EditArea";
+import TypesDevice from "./views/admin/types_devices/TypesDevice";
+import EditTypesDevice from "./views/admin/types_devices/EditTypesDevice";
+import Chat from "./views/admin/chat/Chat";
+import Home from "./views/admin/home/Home";
 
 const LOGGED_IN_STATE = {
   UNKNOWN: 0,
@@ -58,7 +57,15 @@ function App(props) {
       <BrowserRouter history={history}>
         <Suspense>
           <Routes>
-            <Route path="/" element={<>Home page</>} />
+            <Route
+              path="/"
+              element={
+                <UserLayout
+                  parentClass="theme-1" // dark-theme primay_bg , theme-1
+                  component={HomePage}
+                />
+              }
+            />
             {/* <Route
               path="/english-books"
               element={
