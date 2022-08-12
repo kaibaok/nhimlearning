@@ -66,7 +66,7 @@ function App(props) {
                 />
               }
             />
-            {/* <Route
+            <Route
               path="/english-books"
               element={
                 <UserLayout
@@ -348,8 +348,8 @@ function App(props) {
               path="/admin/register"
               name="Register"
               element={<AdminRegister />}
-            /> */}
-            {/* <Route path="*" name="PageNotFound" element={<PageNotFound />} /> */}
+            />
+            <Route path="*" name="PageNotFound" element={<PageNotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
