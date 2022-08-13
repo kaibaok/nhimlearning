@@ -2,7 +2,7 @@ const isIP = false;
 const ip = isIP
   ? "http://smarthome.local"
   : "https://nhimlearning.000webhostapp.com";
-const apiHost = isIP ? ip + "/public" : ip;
+const apiHost = !isIP ? ip + "/public" : ip;
 const host = ip;
 
 const AppConfig = {
