@@ -1,7 +1,7 @@
 const isIP = false;
 const ip = isIP
   ? "http://localhost:8000"
-  : "http://nhimlearning.000webhostapp.com";
+  : "https://nhimlearning.000webhostapp.com";
 const apiHost = !isIP ? ip + "/public" : ip;
 const host = ip;
 
