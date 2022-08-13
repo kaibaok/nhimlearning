@@ -15,7 +15,6 @@ const EnglishBook = (props) => {
   const { voices, speak, speaking } = props;
   let { id, english_book_id } = useParams();
 
-  console.log(id);
   const [lesson, setLesson] = useState();
   const [book, setBook] = useState();
   const [questions, setQuestions] = useState();
@@ -152,8 +151,8 @@ const EnglishBook = (props) => {
                               onClick={(event) => {
                                 setIsVisibleVoiceDialog(true);
                               }}
-                              icon={<em class="icon ni ni-mic"></em>}
-                              className="btn btn-primary d-none d-md-inline"
+                              icon={<em className="icon ni ni-mic"></em>}
+                              className="btn btn-primary"
                             />
                           </div>
                         </div>

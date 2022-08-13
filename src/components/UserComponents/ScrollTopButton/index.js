@@ -22,7 +22,7 @@ const ScrollTopButton = () => {
   return (
     <div className={sticky}>
       <div className="up_btn up_btn1" onClick={() => scrollTop()}>
-        <em class="icon ni ni-chevrons-up"></em>
+        <em className="icon ni ni-chevrons-up"></em>
       </div>
     </div>
   );

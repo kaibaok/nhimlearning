@@ -50,7 +50,7 @@ function DataTable(props) {
                           />
                           <Button
                             label={props.labelBtnCreate}
-                            className="btn btn-primary d-none d-md-inline"
+                            className="btn btn-primary"
                             icon={<em className="icon ni ni-plus"></em>}
                             onClick={props?.onClickBtnCreate}
                           />

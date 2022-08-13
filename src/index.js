@@ -6,13 +6,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import "./assets/css/dashlite.css";
 import "./assets/css/theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import "./assets/scss/master.scss";
 import "font-awesome/css/font-awesome.min.css";
+import "./assets/css/dashlite.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // // const path = window.location.pathname.split("/");

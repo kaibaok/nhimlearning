@@ -1,7 +1,7 @@
 function Button(props) {
   return (
     <button
-      className={`${props.className ?? "btn btn-primary"} `}
+      className={`${props.className ?? "btn btn-primary btn-lg "} `}
       disabled={props.disabled}
       onClick={props.onClick}
       style={props.style}

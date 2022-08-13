@@ -19,7 +19,6 @@ class DeviceFuncFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -33,16 +32,17 @@ class DeviceFuncFetch extends AbstractFetch {
 
   static createDeviceFunc(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/device-func/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/device-func/create?token=" + AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -70,14 +70,18 @@ class DeviceFuncFetch extends AbstractFetch {
 
   static editDeviceFunc(id, payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/device-func/edit/${id}`, {
-        method: "PUT",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/device-func/edit/${id}?token=` +
+          AppStore.fetchToken(),
+        {
+          method: "PUT",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -88,13 +92,17 @@ class DeviceFuncFetch extends AbstractFetch {
 
   static delDeviceFunc(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/device-func/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/device-func/del/${id}?token=` +
+          AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

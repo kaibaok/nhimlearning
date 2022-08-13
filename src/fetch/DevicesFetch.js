@@ -14,7 +14,6 @@ class DevicesFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -27,16 +26,17 @@ class DevicesFetch extends AbstractFetch {
 
   static createDevice(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/devices/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/devices/create?token=" + AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -51,7 +51,6 @@ class DevicesFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -64,14 +63,16 @@ class DevicesFetch extends AbstractFetch {
 
   static editDevice(id, payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/devices/edit/${id}`, {
-        method: "PUT",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + `/devices/edit/${id}?token=` + AppStore.fetchToken(),
+        {
+          method: "PUT",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -82,13 +83,15 @@ class DevicesFetch extends AbstractFetch {
 
   static delDevice(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/devices/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + `/devices/del/${id}?token=` + AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -103,8 +106,6 @@ class DevicesFetch extends AbstractFetch {
         method: "POST",
         headers: {
           accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
         body: JSON.stringify({
           ip_address: ip,
@@ -120,15 +121,18 @@ class DevicesFetch extends AbstractFetch {
 
   static actionDevice(id, payload) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/device/action/${id}`, {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/device/action/${id}?token=` +
+          AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

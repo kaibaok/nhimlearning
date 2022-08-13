@@ -26,7 +26,6 @@ class QuestionFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -40,16 +39,17 @@ class QuestionFetch extends AbstractFetch {
 
   static createQuestion(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/question/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/question/create?token=" + AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -64,7 +64,6 @@ class QuestionFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -77,14 +76,18 @@ class QuestionFetch extends AbstractFetch {
 
   static editQuestion(id, payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/question/edit/${id}`, {
-        method: "PUT",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/question/edit/${id}?token=` +
+          AppStore.fetchToken(),
+        {
+          method: "PUT",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -95,13 +98,15 @@ class QuestionFetch extends AbstractFetch {
 
   static delQuestion(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/question/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + `/question/del/${id}?token=` + AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

@@ -1,6 +1,6 @@
 import AppConfig from "../AppConfig";
 import AbstractFetch from "./AbstractFetch";
-import AppStore from "./AppFetch";
+// import AppStore from "./AppFetch";
 
 class DemoFuncFetch extends AbstractFetch {
   static getAll(criterias = {}) {
@@ -19,7 +19,6 @@ class DemoFuncFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -45,7 +44,6 @@ class DemoFuncFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {

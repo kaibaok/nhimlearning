@@ -26,7 +26,6 @@ class QuestionTypeFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -40,16 +39,19 @@ class QuestionTypeFetch extends AbstractFetch {
 
   static createQuestionType(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/question-type/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          "/question-type/create?token=" +
+          AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -64,7 +66,6 @@ class QuestionTypeFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -78,12 +79,13 @@ class QuestionTypeFetch extends AbstractFetch {
   static editQuestionType(id, payload = {}) {
     try {
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + `/question-type/edit/${id}`,
+        AppConfig.apiUrl +
+          `/question-type/edit/${id}?token=` +
+          AppStore.fetchToken(),
         {
           method: "PUT",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
           body: JSON.stringify(payload),
         }
@@ -99,12 +101,13 @@ class QuestionTypeFetch extends AbstractFetch {
   static delQuestionType(id) {
     try {
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + `/question-type/del/${id}`,
+        AppConfig.apiUrl +
+          `/question-type/del/${id}?token=` +
+          AppStore.fetchToken(),
         {
           method: "DELETE",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {

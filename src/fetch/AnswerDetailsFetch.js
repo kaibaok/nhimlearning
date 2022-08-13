@@ -26,7 +26,6 @@ class AnswerDetailsFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -41,13 +40,15 @@ class AnswerDetailsFetch extends AbstractFetch {
   static createAnswers(payload = {}, id) {
     try {
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + "/answer-detail/" + id + "/create-list",
+        AppConfig.apiUrl +
+          "/answer-detail/" +
+          id +
+          "/create-list?token=" +
+          AppStore.fetchToken(),
         {
           method: "POST",
           headers: {
             accept: "application/json",
-            "Content-type": "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
           body: JSON.stringify(payload),
         }

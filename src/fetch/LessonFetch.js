@@ -23,8 +23,7 @@ class LessonFetch extends AbstractFetch {
       return AbstractFetch.fetch(AppConfig.apiUrl + "/lessons" + queryParams, {
         method: "GET",
         headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
+          Accept: "application/json",
         },
       }).then((response) => {
         return response.json();
@@ -37,16 +36,17 @@ class LessonFetch extends AbstractFetch {
 
   static createLesson(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/lesson/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/lesson/create?token=" + AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -61,7 +61,6 @@ class LessonFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -74,14 +73,16 @@ class LessonFetch extends AbstractFetch {
 
   static editLesson(id, payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/lesson/edit/${id}`, {
-        method: "PUT",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + `/lesson/edit/${id}?token=` + AppStore.fetchToken(),
+        {
+          method: "PUT",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -92,13 +93,18 @@ class LessonFetch extends AbstractFetch {
 
   static delLesson(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/lesson/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/lesson/del/${id}` +
+          "?token=" +
+          AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

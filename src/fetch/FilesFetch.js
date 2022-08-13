@@ -5,13 +5,13 @@ import AppStore from "./AppFetch";
 class FilesFetch extends AbstractFetch {
   static upload(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/media/upload-files", {
-        method: "POST",
-        body: payload,
-        headers: {
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/media/upload-files?token=" + AppStore.fetchToken(),
+        {
+          method: "POST",
+          body: payload,
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -26,8 +26,6 @@ class FilesFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -44,8 +42,6 @@ class FilesFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -58,15 +54,16 @@ class FilesFetch extends AbstractFetch {
 
   static deleteItems(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/media/delete-items", {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/media/delete-items?token=" + AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

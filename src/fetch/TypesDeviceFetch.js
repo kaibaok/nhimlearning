@@ -16,7 +16,6 @@ class TypesDeviceFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -30,16 +29,20 @@ class TypesDeviceFetch extends AbstractFetch {
 
   static createTypesDevice(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/types-device/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          "/types-device/create" +
+          "?token=" +
+          AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -54,7 +57,6 @@ class TypesDeviceFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -69,12 +71,14 @@ class TypesDeviceFetch extends AbstractFetch {
     console.log(payload);
     try {
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + `/types-device/edit/${id}`,
+        AppConfig.apiUrl +
+          `/types-device/edit/${id}` +
+          "?token=" +
+          AppStore.fetchToken(),
         {
           method: "PUT",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
           body: JSON.stringify(payload),
         }
@@ -89,13 +93,18 @@ class TypesDeviceFetch extends AbstractFetch {
 
   static delTypesDevice(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/types-device/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/types-device/del/${id}` +
+          "?token=" +
+          AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

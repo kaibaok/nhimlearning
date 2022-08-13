@@ -218,7 +218,7 @@ function EditTypesDevice() {
                       <li className="nk-block-tools-opt">
                         <Button
                           label="Save"
-                          className="btn btn-info d-none d-md-inline"
+                          className="btn btn-info"
                           icon={<em className="icon ni ni-save"></em>}
                           onClick={onSaveTypesDevice}
                           disabled={isLoading}
@@ -227,7 +227,7 @@ function EditTypesDevice() {
                       <li className="nk-block-tools-opt">
                         <Button
                           label="Cancel"
-                          className="btn btn-secondary d-none d-md-inline"
+                          className="btn btn-secondary"
                           icon={
                             <em className="icon ni ni-back-arrow-fill"></em>
                           }

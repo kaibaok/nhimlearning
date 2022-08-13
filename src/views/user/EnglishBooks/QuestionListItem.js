@@ -63,9 +63,9 @@ const QuestionListItem = (props) => {
     <div className="single_post">
       <h3 className="padding10 alert alert-primary">
         <img
-          className="thumb border rounded p-2 me-2"
+          className="thumb p-2 me-2"
           src={IconQuestion}
-          width={30}
+          width={50}
           alt={IconQuestion}
         />
         {question.name}

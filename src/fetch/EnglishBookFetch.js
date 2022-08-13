@@ -27,7 +27,6 @@ class EnglishBookFetch extends AbstractFetch {
           method: "GET",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
         }
       ).then((response) => {
@@ -41,16 +40,19 @@ class EnglishBookFetch extends AbstractFetch {
 
   static createEnglishBook(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/english-book/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          "/english-book/create?token=" +
+          AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          // body: form,
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -65,7 +67,6 @@ class EnglishBookFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -79,12 +80,13 @@ class EnglishBookFetch extends AbstractFetch {
   static editEnglishBook(id, payload = {}) {
     try {
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + `/english-book/edit/${id}`,
+        AppConfig.apiUrl +
+          `/english-book/edit/${id}?token=` +
+          AppStore.fetchToken(),
         {
           method: "PUT",
           headers: {
             accept: "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
           },
           body: JSON.stringify(payload),
         }
@@ -99,13 +101,17 @@ class EnglishBookFetch extends AbstractFetch {
 
   static delEnglishBook(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/english-book/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/english-book/del/${id}?token=` +
+          AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {

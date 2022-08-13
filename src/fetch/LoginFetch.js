@@ -28,23 +28,26 @@ class LoginFetch {
   }
 
   static findUserInfo() {
-    return fetch(AppConfig.findUserInfoUrl, {
-      headers: {
-        accept: "application/json",
-        authorization: "bearer " + AppStore.fetchToken(),
-      },
-      method: "GET",
-    })
+    return fetch(
+      AppConfig.findUserInfoUrl + "?token=" + AppStore.fetchToken(),
+      {
+        headers: {
+          accept: "application/json",
+        },
+        cache: "no-cache",
+        // credentials: "include",
+        method: "GET",
+      }
+    )
       .then(LoginFetch.handleErrors)
       .then((response) => response.json());
   }
 
   static logout() {
-    return fetch(AppConfig.logoutUrl, {
+    return fetch(AppConfig.logoutUrl + "?token=" + AppStore.fetchToken(), {
       method: "POST",
       headers: {
         accept: "application/json",
-        authorization: "bearer " + AppStore.fetchToken(),
       },
     }).then((response) => {
       if (!response.ok) {

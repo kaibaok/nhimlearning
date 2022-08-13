@@ -6,13 +6,13 @@ class ServicesFetch extends AbstractFetch {
   static testFunc(payload) {
     try {
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + "/services/device-test-func",
+        AppConfig.apiUrl +
+          "/services/device-test-func?token=" +
+          AppStore.fetchToken(),
         {
           method: "POST",
           headers: {
-            accept: "application/json",
-            "Content-type": "application/json",
-            authorization: "bearer " + AppStore.fetchToken(),
+            Accept: "application/json",
           },
           body: JSON.stringify(payload),
         }

@@ -27,7 +27,6 @@ class AreasFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -40,16 +39,16 @@ class AreasFetch extends AbstractFetch {
 
   static createArea(payload = {}) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + "/area/create", {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-type": "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        // body: form,
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + "/area/create?token=" + AppStore.fetchToken(),
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -64,7 +63,6 @@ class AreasFetch extends AbstractFetch {
         method: "GET",
         headers: {
           accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
         },
       }).then((response) => {
         return response.json();
@@ -78,14 +76,16 @@ class AreasFetch extends AbstractFetch {
   static editArea(id, payload = {}) {
     console.log(payload);
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/area/edit/${id}`, {
-        method: "PUT",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-        body: JSON.stringify(payload),
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl + `/area/edit/${id}?token=` + AppStore.fetchToken(),
+        {
+          method: "PUT",
+          headers: {
+            accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -96,13 +96,18 @@ class AreasFetch extends AbstractFetch {
 
   static delArea(id) {
     try {
-      return AbstractFetch.fetch(AppConfig.apiUrl + `/area/del/${id}`, {
-        method: "DELETE",
-        headers: {
-          accept: "application/json",
-          authorization: "bearer " + AppStore.fetchToken(),
-        },
-      }).then((response) => {
+      return AbstractFetch.fetch(
+        AppConfig.apiUrl +
+          `/area/del/${id}
+          ?token=` +
+          AppStore.fetchToken(),
+        {
+          method: "DELETE",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      ).then((response) => {
         return response.json();
       });
     } catch (e) {
