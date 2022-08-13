@@ -66,7 +66,7 @@ class DevicesFetch extends AbstractFetch {
       return AbstractFetch.fetch(
         AppConfig.apiUrl + `/devices/edit/${id}?token=` + AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },

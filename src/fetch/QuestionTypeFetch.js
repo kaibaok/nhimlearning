@@ -83,7 +83,7 @@ class QuestionTypeFetch extends AbstractFetch {
           `/question-type/edit/${id}?token=` +
           AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },

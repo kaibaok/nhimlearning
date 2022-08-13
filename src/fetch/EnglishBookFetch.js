@@ -91,7 +91,7 @@ class EnglishBookFetch extends AbstractFetch {
           `/english-book/edit/${id}?token=` +
           AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },

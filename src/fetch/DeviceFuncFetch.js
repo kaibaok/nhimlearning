@@ -75,7 +75,7 @@ class DeviceFuncFetch extends AbstractFetch {
           `/device-func/edit/${id}?token=` +
           AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },

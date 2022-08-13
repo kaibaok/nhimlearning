@@ -39,6 +39,7 @@ class AnswerDetailsFetch extends AbstractFetch {
   }
 
   static createAnswers(payload = {}, id) {
+    console.log(payload);
     try {
       return AbstractFetch.fetch(
         AppConfig.apiUrl +

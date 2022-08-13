@@ -76,7 +76,7 @@ class TypesDeviceFetch extends AbstractFetch {
           "?token=" +
           AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },

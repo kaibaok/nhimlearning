@@ -76,7 +76,7 @@ class LessonFetch extends AbstractFetch {
       return AbstractFetch.fetch(
         AppConfig.apiUrl + `/lesson/edit/${id}?token=` + AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },

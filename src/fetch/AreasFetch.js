@@ -75,12 +75,11 @@ class AreasFetch extends AbstractFetch {
   }
 
   static editArea(id, payload = {}) {
-    console.log(payload);
     try {
       return AbstractFetch.fetch(
         AppConfig.apiUrl + `/area/edit/${id}?token=` + AppStore.fetchToken(),
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             accept: "application/json",
           },
