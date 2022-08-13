@@ -35,7 +35,6 @@ class LoginFetch {
           accept: "application/json",
         },
         cache: "no-cache",
-        // credentials: "include",
         method: "GET",
       }
     )

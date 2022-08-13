@@ -6,10 +6,10 @@ import AppError from "../lib/AppError";
 const originalFetch = require("isomorphic-fetch");
 const fetchRetry = require("fetch-retry")(originalFetch);
 
-const cacheControlHeader = "no-cache, no-store, must-revalidate, max-age=-1";
-const expiresHeader = "-1";
-const pragmaHeader = "no-cache";
-const cacheOption = "no-store";
+// const cacheControlHeader = "no-cache, no-store, must-revalidate, max-age=-1";
+// const expiresHeader = "-1";
+// const pragmaHeader = "no-cache";
+// const cacheOption = "no-store";
 
 class AbstractFetch {
   /**
@@ -36,26 +36,26 @@ class AbstractFetch {
 
     // add the cache option if its not already set
     // this is a fetch request option, see https://developer.mozilla.org/en-US/docs/Web/API/Request/cache
-    if (fetchOptions.method === "GET" && !fetchOptions["cache"]) {
-      fetchOptions["cache"] = cacheOption;
-    }
+    // if (fetchOptions.method === "GET" && !fetchOptions["cache"]) {
+    //   fetchOptions["cache"] = cacheOption;
+    // }
 
     // add the Cache-Control, Expires and Pragma headers option to any GET request that doesn't already have have it.
     // this is to avoid issues in IE, see http://jussi.hallila.com/2016/05/01/fixing-internet-explorer-for-your-react-es6-app.html
-    if (
-      fetchOptions.method === "GET" &&
-      !fetchOptions.headers["Cache-Control"]
-    ) {
-      fetchOptions.headers["Cache-Control"] = cacheControlHeader;
-    }
+    // if (
+    //   fetchOptions.method === "GET" &&
+    //   !fetchOptions.headers["Cache-Control"]
+    // ) {
+    //   fetchOptions.headers["Cache-Control"] = cacheControlHeader;
+    // }
 
-    if (fetchOptions.method === "GET" && !fetchOptions.headers["Pragma"]) {
-      fetchOptions.headers["Pragma"] = pragmaHeader;
-    }
+    // if (fetchOptions.method === "GET" && !fetchOptions.headers["Pragma"]) {
+    //   fetchOptions.headers["Pragma"] = pragmaHeader;
+    // }
 
-    if (fetchOptions.method === "GET" && !fetchOptions.headers["Expires"]) {
-      fetchOptions.headers["Expires"] = expiresHeader;
-    }
+    // if (fetchOptions.method === "GET" && !fetchOptions.headers["Expires"]) {
+    //   fetchOptions.headers["Expires"] = expiresHeader;
+    // }
 
     // sometimes AWS can throw 503 errors from Cloudfront if there is high load at an edge location (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/http-503-service-unavailable.html).
     // Also, AWS can return 502 (Bad Gateway) at any time (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/http-502-bad-gateway.html)

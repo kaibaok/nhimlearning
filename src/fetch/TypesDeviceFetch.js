@@ -99,7 +99,7 @@ class TypesDeviceFetch extends AbstractFetch {
           "?token=" +
           AppStore.fetchToken(),
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             accept: "application/json",
           },

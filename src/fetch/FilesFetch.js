@@ -1,17 +1,13 @@
 import AppConfig from "../AppConfig";
 import AbstractFetch from "./AbstractFetch";
-import AppStore from "./AppFetch";
 
 class FilesFetch extends AbstractFetch {
   static upload(payload = {}) {
     try {
-      return AbstractFetch.fetch(
-        AppConfig.apiUrl + "/media/upload-files?token=" + AppStore.fetchToken(),
-        {
-          method: "POST",
-          body: payload,
-        }
-      ).then((response) => {
+      return fetch(AppConfig.baseUrl + "/media/upload-files", {
+        method: "POST",
+        body: payload,
+      }).then((response) => {
         return response.json();
       });
     } catch (e) {
@@ -54,16 +50,16 @@ class FilesFetch extends AbstractFetch {
 
   static deleteItems(payload = {}) {
     try {
-      return AbstractFetch.fetch(
-        AppConfig.apiUrl + "/media/delete-items?token=" + AppStore.fetchToken(),
-        {
-          method: "DELETE",
-          headers: {
-            accept: "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      ).then((response) => {
+      var form = new FormData();
+      form.append("files", payload?.files);
+
+      return AbstractFetch.fetch(AppConfig.apiUrl + "/media/delete-items", {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+        },
+        body: form,
+      }).then((response) => {
         return response.json();
       });
     } catch (e) {

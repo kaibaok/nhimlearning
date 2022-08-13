@@ -27,6 +27,7 @@ class AnswerDetailsFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
         }
       ).then((response) => {
         return response.json();
@@ -50,6 +51,7 @@ class AnswerDetailsFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
           body: JSON.stringify(payload),
         }
       ).then((response) => {

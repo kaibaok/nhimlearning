@@ -97,7 +97,7 @@ class DeviceFuncFetch extends AbstractFetch {
           `/device-func/del/${id}?token=` +
           AppStore.fetchToken(),
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             accept: "application/json",
           },

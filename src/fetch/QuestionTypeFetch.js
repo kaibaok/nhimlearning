@@ -105,7 +105,7 @@ class QuestionTypeFetch extends AbstractFetch {
           `/question-type/del/${id}?token=` +
           AppStore.fetchToken(),
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             accept: "application/json",
           },

@@ -161,7 +161,9 @@ function Media(props) {
             isChecked={imagesDelete.includes(item) ? true : false}
             image={AppConfig.storageUrl + item}
             closeButton={true}
-            onClickCloseButton={() => deleteItems([item])}
+            onClickCloseButton={() => {
+              deleteItems([item]);
+            }}
           />
         </div>
       ))
@@ -224,7 +226,7 @@ function Media(props) {
           className="btn btn-danger"
           style={{ position: "absolute", right: 0, top: -5 }}
           onClick={() => {
-            deleteItems(imagesDelete);
+            deleteItems([imagesDelete]);
           }}
           label="Delete Images"
         />
@@ -235,7 +237,7 @@ function Media(props) {
           className="btn btn-danger"
           style={{ position: "absolute", right: 0, top: -5 }}
           onClick={() => {
-            deleteItems(videosDelete);
+            deleteItems([videosDelete]);
           }}
           label="Delete Video"
         />

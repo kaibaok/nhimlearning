@@ -22,12 +22,17 @@ class EnglishBookFetch extends AbstractFetch {
       }
 
       return AbstractFetch.fetch(
-        AppConfig.apiUrl + "/english-books" + queryParams,
+        AppConfig.apiUrl +
+          "/english-books" +
+          queryParams +
+          "&token=" +
+          AppStore.fetchToken(),
         {
           method: "GET",
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
         }
       ).then((response) => {
         return response.json();
@@ -49,6 +54,7 @@ class EnglishBookFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
           // body: form,
           body: JSON.stringify(payload),
         }
@@ -68,6 +74,7 @@ class EnglishBookFetch extends AbstractFetch {
         headers: {
           accept: "application/json",
         },
+        cache: "no-cache",
       }).then((response) => {
         return response.json();
       });
@@ -88,6 +95,7 @@ class EnglishBookFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
           body: JSON.stringify(payload),
         }
       ).then((response) => {
@@ -106,10 +114,11 @@ class EnglishBookFetch extends AbstractFetch {
           `/english-book/del/${id}?token=` +
           AppStore.fetchToken(),
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
         }
       ).then((response) => {
         return response.json();

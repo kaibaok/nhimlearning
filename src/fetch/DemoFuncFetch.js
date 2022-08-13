@@ -20,6 +20,7 @@ class DemoFuncFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
         }
       ).then((response) => {
         return response.json();
@@ -45,6 +46,7 @@ class DemoFuncFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
         }
       ).then((response) => {
         return response.json();

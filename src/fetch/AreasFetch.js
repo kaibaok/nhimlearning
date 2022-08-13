@@ -46,6 +46,7 @@ class AreasFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
           body: JSON.stringify(payload),
         }
       ).then((response) => {
@@ -83,6 +84,7 @@ class AreasFetch extends AbstractFetch {
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
           body: JSON.stringify(payload),
         }
       ).then((response) => {
@@ -102,10 +104,11 @@ class AreasFetch extends AbstractFetch {
           ?token=` +
           AppStore.fetchToken(),
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             accept: "application/json",
           },
+          cache: "no-cache",
         }
       ).then((response) => {
         return response.json();
