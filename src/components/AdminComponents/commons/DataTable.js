@@ -13,9 +13,9 @@ function DataTable(props) {
 
               <div className="nk-block-head-content">
                 <div className="toggle-wrap nk-block-tools-toggle">
-                  <div className="toggle-expand-content">
+                  <div className="">
                     <ul className="nk-block-tools g-3">
-                      <li>
+                      <li >
                         <div className="form-control-wrap">
                           <div className="form-icon form-icon-right">
                             <em
@@ -43,11 +43,6 @@ function DataTable(props) {
                       </li>
                       {props?.enableBtnCreate && (
                         <li className="nk-block-tools-opt">
-                          <Button
-                            className="btn btn-icon btn-primary d-md-none"
-                            icon={<em className="icon ni ni-plus"></em>}
-                            onClick={props?.onClickBtnCreate}
-                          />
                           <Button
                             label={props.labelBtnCreate}
                             className="btn btn-primary"
