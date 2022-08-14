@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import FontAwesome from "../uiStyle/FontAwesome";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchModal from "../SearchModal";
 import SidebarMenu from "../SidebarMenu";
 import WeatherWidget from "../WeatherWidget";
@@ -51,12 +51,9 @@ const MainMenu = ({ className }) => {
                       className="navbar-toggler"
                       onClick={() => setSideShow(true)}
                     >
-                      <FontAwesome name="bars" />
+                      <em class="icon ni ni-menu-squared font30"></em>
                     </button>
-                    <div
-                      id="navbarSupportedContent"
-                      className="collapse navbar-collapse navbar-responsive-collapse"
-                    >
+                    <div className="collapse navbar-collapse navbar-responsive-collapse">
                       <ul className="nav navbar-nav" id="scroll">
                         {menus.length > 0
                           ? menus.map((item, i) => (
@@ -67,7 +64,7 @@ const MainMenu = ({ className }) => {
                                                 nav-item`}
                               >
                                 {item.child ? (
-                                  <NavLink
+                                  <Link
                                     onClick={(e) => e.preventDefault()}
                                     to="/"
                                     className="menu-dropdown"
@@ -75,16 +72,16 @@ const MainMenu = ({ className }) => {
                                   >
                                     {item.linkText}
                                     <FontAwesome name={item.icon} />
-                                  </NavLink>
+                                  </Link>
                                 ) : (
-                                  <NavLink
+                                  <Link
                                     to={item.link}
                                     className="menu-dropdown"
                                     data-toggle="dropdown"
                                   >
                                     {item.linkText}{" "}
                                     <FontAwesome name={item.icon} />
-                                  </NavLink>
+                                  </Link>
                                 )}
 
                                 {item.child ? (
@@ -100,25 +97,25 @@ const MainMenu = ({ className }) => {
                                                         `}
                                       >
                                         {sub_item.child ? (
-                                          <NavLink
+                                          <Link
                                             onClick={(e) => e.preventDefault()}
                                             to="/"
                                           >
                                             {sub_item.linkText}
-                                          </NavLink>
+                                          </Link>
                                         ) : (
-                                          <NavLink to={sub_item.link}>
+                                          <Link to={sub_item.link}>
                                             {sub_item.linkText}
-                                          </NavLink>
+                                          </Link>
                                         )}
                                         {sub_item.third_menu ? (
                                           <ul className="dropdown-menu">
                                             {sub_item.third_menu.map(
                                               (third_item, i) => (
                                                 <li key={i}>
-                                                  <NavLink to={third_item.link}>
+                                                  <Link to={third_item.link}>
                                                     {third_item.linkText}
-                                                  </NavLink>
+                                                  </Link>
                                                 </li>
                                               )
                                             )}

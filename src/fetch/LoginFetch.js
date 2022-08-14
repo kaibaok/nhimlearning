@@ -1,5 +1,6 @@
 import AppConfig from "../AppConfig";
 import AppStore from "./AppFetch";
+import AbstractFetch from "./AbstractFetch";
 
 class LoginFetch {
   static handleErrors(response) {
@@ -16,30 +17,33 @@ class LoginFetch {
     form.append("password", password);
     form.append("remember_me", isRemember);
 
-    return fetch(AppConfig.loginUrl, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-      },
-      body: form,
-    })
-      .then(LoginFetch.handleErrors)
-      .then((response) => response.json());
-  }
-
-  static findUserInfo() {
-    return fetch(
-      AppConfig.findUserInfoUrl + "?token=" + AppStore.fetchToken(),
-      {
+    return (
+      AbstractFetch.fetch(AppConfig.loginUrl, {
+        method: "POST",
         headers: {
           accept: "application/json",
         },
-        cache: "no-cache",
-        method: "GET",
-      }
-    )
-      .then(LoginFetch.handleErrors)
-      .then((response) => response.json());
+        body: form,
+      })
+        // .then(LoginFetch.handleErrors)
+        .then((response) => response.json())
+    );
+  }
+
+  static findUserInfo() {
+    return (
+      AbstractFetch.fetch(
+        AppConfig.findUserInfoUrl + "?token=" + AppStore.fetchToken(),
+        {
+          headers: {
+            accept: "application/json",
+          },
+          method: "GET",
+        }
+      )
+        // .then(LoginFetch.handleErrors)
+        .then((response) => response.json())
+    );
   }
 
   static logout() {
@@ -69,15 +73,17 @@ class LoginFetch {
     form.append("email", payload.email);
     form.append("password_confirmation", payload.password_confirmation);
 
-    return fetch(AppConfig.registerUrl, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-      },
-      body: form,
-    })
-      .then(LoginFetch.handleErrors)
-      .then((response) => response.json());
+    return (
+      fetch(AppConfig.registerUrl, {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+        },
+        body: form,
+      })
+        // .then(LoginFetch.handleErrors)
+        .then((response) => response.json())
+    );
   }
 }
 export default LoginFetch;
