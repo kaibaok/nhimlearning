@@ -27,12 +27,19 @@ const menus = [
 ];
 
 function HeaderAdmin(props) {
+  const { setDisplayNavMobile, displayNavMobile } = props;
   return (
     <div className="nk-header is-light">
       <div className="container-fluid">
         <div className="nk-header-wrap">
           <div className="nk-menu-trigger me-sm-2 d-lg-none">
-            <Link to="" className="nk-nav-toggle nk-quick-nav-icon">
+            <Link
+              to="#"
+              className="nk-nav-toggle nk-quick-nav-icon"
+              onClick={() => {
+                if (setDisplayNavMobile) setDisplayNavMobile(!displayNavMobile);
+              }}
+            >
               <em className="icon ni ni-menu"></em>
             </Link>
           </div>
@@ -41,7 +48,12 @@ function HeaderAdmin(props) {
               <img className="logo-dark logo-img" src={logo} alt="logo-dark" />
             </Link>
           </div>
-          <div className="nk-header-menu ms-auto" data-content="headerNav">
+          <div
+            className={`nk-header-menu ms-auto ${
+              displayNavMobile ? "mobile-menu nk-header-active" : ""
+            }`}
+            data-content="headerNav"
+          >
             <div className="nk-header-mobile">
               <div className="nk-header-brand">
                 <Link to="/admin" className="logo-link">
@@ -53,7 +65,13 @@ function HeaderAdmin(props) {
                 </Link>
               </div>
               <div className="nk-menu-trigger me-n2">
-                <Link to="#" className="nk-nav-toggle nk-quick-nav-icon">
+                <Link
+                  to="#"
+                  className="nk-nav-toggle nk-quick-nav-icon"
+                  onClick={() => {
+                    if (setDisplayNavMobile) setDisplayNavMobile(false);
+                  }}
+                >
                   <em className="icon ni ni-arrow-left"></em>
                 </Link>
               </div>
@@ -73,10 +91,17 @@ function HeaderAdmin(props) {
                     <span className="nk-menu-text">{item?.name}</span>
                   </Link>
                   {item?.childs && (
-                    <ul className="nk-menu-sub">
+                    <ul className="nk-menu-sub " style={{ display: "block" }}>
                       {item.childs.map((child, subKey) => (
                         <li key={`sub-nav ${subKey}`} className="nk-menu-item">
-                          <Link to={child?.link} className="nk-menu-link">
+                          <Link
+                            to={child?.link}
+                            className="nk-menu-link"
+                            onClick={() => {
+                              if (setDisplayNavMobile)
+                                setDisplayNavMobile(false);
+                            }}
+                          >
                             <span className="nk-menu-text">{child?.name}</span>
                           </Link>
                         </li>
@@ -87,6 +112,10 @@ function HeaderAdmin(props) {
               ))}
             </ul>
           </div>
+          {displayNavMobile && (
+            <div class="nk-header-overlay" data-target="headerNav"></div>
+          )}
+
           <div className="nk-header-tools">
             <ul className="nk-quick-nav">
               <li className="dropdown user-dropdown">

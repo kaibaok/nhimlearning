@@ -21,7 +21,6 @@ function Home() {
     };
     findUserInfo();
   }, [navigate]);
-  console.log("home page");
 
   return <div>Trang home</div>;
 }

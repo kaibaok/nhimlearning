@@ -1,7 +1,11 @@
+import { useState } from "react";
 import HeaderAdmin from "../components/AdminComponents/header/HeaderAdmin";
 
 function AdminLayout(props) {
   const { component: Component } = props;
+
+  const [displayNavMobile, setDisplayNavMobile] = useState(false);
+
   return (
     <div
       className="nk-body bg-lighter no-touch nk-nio-theme modal-open"
@@ -9,7 +13,10 @@ function AdminLayout(props) {
     >
       <div className="nk-app-root">
         <div className="nk-wrap ">
-          <HeaderAdmin />
+          <HeaderAdmin
+            setDisplayNavMobile={setDisplayNavMobile}
+            displayNavMobile={displayNavMobile}
+          />
           <div className="nk-content ">
             <div className="container-fluid">
               <div className="nk-content-inner">
