@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import LogoArea from "../components/UserComponents/LogoArea";
 import MainMenu from "../components/UserComponents/MainMenu";
-import FooterArea from "../components/UserComponents/FooterArea";
+// import FooterArea from "../components/UserComponents/FooterArea";
 import { ToastContainer } from "react-toastify";
 import ScrollTopButton from "../components/UserComponents/ScrollTopButton";
 import { useSpeechSynthesis } from "../components/AdminComponents/commons/Speech";
