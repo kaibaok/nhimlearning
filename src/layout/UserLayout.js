@@ -32,7 +32,7 @@ const UserLayout = (props) => {
           voices={voicesChosen}
           speaking={speaking}
         />
-        <FooterArea className="primay_bg" />
+        {/* <FooterArea className="primay_bg" /> */}
         <ToastContainer position="top-center" />
         <ScrollTopButton />
       </div>
