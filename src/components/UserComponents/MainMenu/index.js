@@ -51,7 +51,7 @@ const MainMenu = ({ className }) => {
                       className="navbar-toggler"
                       onClick={() => setSideShow(true)}
                     >
-                      <em class="icon ni ni-menu-squared font30"></em>
+                      <em className="icon ni ni-menu-squared font30"></em>
                     </button>
                     <div className="collapse navbar-collapse navbar-responsive-collapse">
                       <ul className="nav navbar-nav" id="scroll">

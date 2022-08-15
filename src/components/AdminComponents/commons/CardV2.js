@@ -23,11 +23,13 @@ function Card(props) {
           />
         </div>
       )}
-      <div className="card-inner">
-        {props.title && <h5 className="card-title">{props.title}</h5>}
-        {props.subTitle && <p className="card-text">{props.subTitle}</p>}
-        {props.body && <div>{props.body}</div>}
-      </div>
+      {(props.title || props.subTitle || props.body) && (
+        <div className="card-inner">
+          {props.title && <h5 className="card-title">{props.title}</h5>}
+          {props.subTitle && <p className="card-text">{props.subTitle}</p>}
+          {props.body && <div>{props.body}</div>}
+        </div>
+      )}
       {props.closeButton && (
         <HighlightOffIcon
           onClick={props.onClickCloseButton}

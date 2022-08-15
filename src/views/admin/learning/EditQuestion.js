@@ -5,11 +5,13 @@ import PropTypes from "prop-types";
 import QuestionTypeFetch from "../../../fetch/QuestionTypeFetch";
 // COMPONENTS
 import { ToastContainer, toast } from "react-toastify";
+import SimpleBar from "simplebar-react";
 // CSS
 import QuestionFetch from "../../../fetch/QuestionFetch";
 import { Button } from "../../../components/AdminComponents/commons";
 import QuestionWidget from "./child_widget/QuestionWidget";
 import AnswerDetailsFetch from "../../../fetch/AnswerDetailsFetch";
+import { Card } from "../../../components/AdminComponents/commons";
 
 function EditQuestion() {
   // get query params
@@ -25,6 +27,7 @@ function EditQuestion() {
   const [types, setTypes] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [height, setHeight] = useState(500);
+  const [videos, setVideos] = useState("");
 
   const updateWindowDimensions = () => {
     setHeight(window.innerHeight);
@@ -76,6 +79,7 @@ function EditQuestion() {
         if (question) {
           setName(question?.name);
           setDescription(question?.description ?? "");
+          setVideos(question?.videos ?? "");
           // setQuestion(question);
           setQuestionType(question?.question_type_id ?? 0);
           setOrderNumber(question?.order_number ?? 0);
@@ -114,6 +118,7 @@ function EditQuestion() {
         description: description,
         question_type_id: questionType,
         order_number: orderNumber,
+        videos: videos,
       })
         .then(async (json) => {
           if (json.question) {
@@ -141,6 +146,7 @@ function EditQuestion() {
         description: description ?? "",
         question_type_id: questionType ?? "",
         order_number: orderNumber ?? "",
+        videos: videos ?? "",
       })
         .then(async (json) => {
           showToast("Edit Successfully", false);
@@ -162,6 +168,15 @@ function EditQuestion() {
 
   const showToast = (title, error) => {
     error ? toast.error(title) : toast.success(title);
+  };
+
+  const videosPreview = () => {
+    if (!videos) return null;
+    return videos.split("\n").map((video) => (
+      <div className="col-lg-4 col-xs-3 mb-3">
+        <Card video={video} />
+      </div>
+    ));
   };
 
   return (
@@ -284,6 +299,29 @@ function EditQuestion() {
                           value={description}
                         />
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-lg-4 col-xs-12 mb-3">
+                    <label className="form-label">Videos</label>
+                    <div className="form-control-wrap">
+                      <textarea
+                        className="form-control no-resize"
+                        onChange={(event) => {
+                          setVideos(event.target.value);
+                        }}
+                        rows={3}
+                        value={videos}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-8 col-xs-12">
+                    <label className="form-label">Videos Preview</label>
+                    <div className="form-control-wrap">
+                      <SimpleBar style={{ maxHeight: 320, marginBottom: 20 }}>
+                        <div className="row p-3">{videosPreview()}</div>
+                      </SimpleBar>
                     </div>
                   </div>
                 </div>

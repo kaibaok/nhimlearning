@@ -113,7 +113,7 @@ function HeaderAdmin(props) {
             </ul>
           </div>
           {displayNavMobile && (
-            <div class="nk-header-overlay" data-target="headerNav"></div>
+            <div className="nk-header-overlay" data-target="headerNav"></div>
           )}
 
           <div className="nk-header-tools">

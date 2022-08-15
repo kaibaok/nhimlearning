@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import AppConfig from "../../../AppConfig";
 import Conversation from "./Conversation";
 import IconQuestion from "../../../assets/images/icon/icon_question.png";
+import { Card } from "../../../components/AdminComponents/commons";
 
 const QuestionListItem = (props) => {
   const {
@@ -18,6 +19,7 @@ const QuestionListItem = (props) => {
   } = props;
   const [answers, setAnswers] = useState();
   const [visibleTab1, setVisibleTab1] = useState(false);
+  const [visibleTab2, setVisibleTab2] = useState(false);
 
   useEffect(() => {
     const loadAnswerDetail = async (question_id) => {
@@ -59,6 +61,92 @@ const QuestionListItem = (props) => {
     speak({ text: text, voice: voice });
   };
 
+  const displayTargetVocabulary = () => {
+    if (!question.description) return null;
+    const descriptions_arr = question.description.split("\n");
+
+    return (
+      <div className="accordion-item">
+        <span
+          href="#"
+          className={`accordion-head cursor_pointer ${
+            visibleTab1 ? "" : "collapsed"
+          }`}
+          onClick={() => {
+            setVisibleTab1(!visibleTab1);
+          }}
+        >
+          <h6 className="title">Target Vocabulary</h6>
+          <span className="accordion-icon"></span>
+        </span>
+        <div className={`accordion-body collapse ${visibleTab1 ? "show" : ""}`}>
+          <div className="accordion-inner">
+            <div className="row">
+              {descriptions_arr.map((item, key) => {
+                if (!item) return "";
+                return (
+                  <div
+                    className="col-lg-3 col-md-4 col-xs-6 mb-2 cursor_pointer"
+                    key={key}
+                    onClick={() => {
+                      readText({ text: item });
+                    }}
+                  >
+                    <div className="alert alert-danger">{item}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const displayVideos = () => {
+    if (!question.videos) return null;
+    const videos_arr = question.videos.split("\n");
+
+    return (
+      <div className="accordion-item">
+        <span
+          href="#"
+          className={`accordion-head cursor_pointer ${
+            visibleTab2 ? "" : "collapsed"
+          }`}
+          onClick={() => {
+            setVisibleTab2(!visibleTab2);
+          }}
+        >
+          <h6 className="title">Videos</h6>
+          <span className="accordion-icon"></span>
+        </span>
+        <div className={`accordion-body collapse ${visibleTab2 ? "show" : ""}`}>
+          <div className="accordion-inner">
+            <div className="row">
+              {videos_arr.map((item, key) => {
+                if (!item) return "";
+                return (
+                  <div
+                    className="col-lg-4 col-md-4 col-xs-6 mb-2 cursor_pointer"
+                    key={key}
+                    onClick={() => {
+                      readText({ text: item });
+                    }}
+                  >
+                    <div className="alert alert-danger p-1">
+                      {<Card video={item} />}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="single_post">
       <h3 className="padding10 alert alert-primary">
@@ -71,46 +159,8 @@ const QuestionListItem = (props) => {
         {question.name}
       </h3>
 
-      <div className="accordion mb-3">
-        {question.description_arr && question.description_arr.length > 0 && (
-          <div className="accordion-item">
-            <span
-              href="#"
-              className={`accordion-head cursor_pointer ${
-                visibleTab1 ? "" : "collapsed"
-              }`}
-              onClick={() => {
-                setVisibleTab1(!visibleTab1);
-              }}
-            >
-              <h6 className="title">Target Vocabulary</h6>
-              <span className="accordion-icon"></span>
-            </span>
-            <div
-              className={`accordion-body collapse ${visibleTab1 ? "show" : ""}`}
-            >
-              <div className="accordion-inner">
-                <div className="row">
-                  {question.description_arr.map((item, key) => {
-                    if (!item) return "";
-                    return (
-                      <div
-                        className="col-lg-3 col-md-4 col-xs-6 mb-2 cursor_pointer"
-                        key={key}
-                        onClick={() => {
-                          readText({ text: item });
-                        }}
-                      >
-                        <div className="alert alert-danger">{item}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      <div className="accordion mb-3">{displayTargetVocabulary()}</div>
+      <div className="accordion mb-3">{displayVideos()}</div>
 
       <div className="row">
         {answers &&
