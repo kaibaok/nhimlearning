@@ -1,9 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumb from "../../../components/UserComponents/BreadCrumb";
-import FontAwesome from "../../../components/UserComponents/uiStyle/FontAwesome";
 import { Link, useParams } from "react-router-dom";
 import QuestionList from "./QuestionList";
-import english_book from "../../../assets/images/common/english_book.jpg";
 import LessonFetch from "../../../fetch/LessonFetch";
 import LessonDetailsFetch from "../../../fetch/LessonDetailsFetch";
 import EnglishBookFetch from "../../../fetch/EnglishBookFetch";
@@ -129,6 +127,17 @@ const EnglishBook = (props) => {
               link2={`/english-book/${english_book_id}`}
               title3={lesson?.name}
             />
+            <div className="col-xs-12">
+              <div className=" d-flex justify-content-start pt-3">
+                <Button
+                  onClick={(event) => {
+                    setIsVisibleVoiceDialog(true);
+                  }}
+                  icon={<em className="icon ni ni-mic"></em>}
+                  className="btn btn-primary"
+                />
+              </div>
+            </div>
             <div className="space-30"></div>
             <div className="row">
               <QuestionList
@@ -186,6 +195,14 @@ const EnglishBook = (props) => {
           </div>
         </div>
       </div>
+      <VoiceDialog
+        title="Setting Voices"
+        speak={speak}
+        voices={voices}
+        visible={isVisibleVoiceDialog}
+        onClose={setIsVisibleVoiceDialog}
+        onRefresh={onRefreshVoices}
+      />
     </div>
   );
 };

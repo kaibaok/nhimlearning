@@ -17,7 +17,7 @@ function EditEnglishBook() {
   let { id } = useParams();
 
   let navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");

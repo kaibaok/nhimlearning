@@ -8,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import SimpleBar from "simplebar-react";
 // CSS
 import QuestionFetch from "../../../fetch/QuestionFetch";
-import { Button } from "../../../components/AdminComponents/commons";
 import QuestionWidget from "./child_widget/QuestionWidget";
 import AnswerDetailsFetch from "../../../fetch/AnswerDetailsFetch";
 import { Card } from "../../../components/AdminComponents/commons";
@@ -18,7 +17,7 @@ function EditQuestion() {
   let { id } = useParams();
 
   let navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [orderNumber, setOrderNumber] = useState(0);

@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import AnswerImageTextItem from "./AnswerImageTextItem";
 import SimpleBar from "simplebar-react";
-import { Button } from "../../../../components/AdminComponents/commons";
 function AnswerImageText(props) {
-  const { answers, addMoreAnswers, setAnswers, maxHeight } = props;
+  const { answers, setAnswers, maxHeight } = props;
 
   const editAnswer = (value, index, keyName) => {
     let answer = answers[index];

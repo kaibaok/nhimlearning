@@ -7,14 +7,13 @@ import QuestionTypeFetch from "../../../fetch/QuestionTypeFetch";
 import { ToastContainer, toast } from "react-toastify";
 // CSS
 import "react-toastify/dist/ReactToastify.css";
-import { Button } from "../../../components/AdminComponents/commons";
 
 function EditQuestionType() {
   // get query params
   let { id } = useParams();
 
   let navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
