@@ -110,148 +110,83 @@ const EnglishBook = (props) => {
   }, [id, nextPage, english_book_id]);
 
   return (
-    <Fragment>
-      <div className="archives post post1">
-        <BreadCrumb
-          className="padding-top-30"
-          title="English Books"
-          link="/english-books"
-          title2={book?.name}
-          link2={`/english-book/${english_book_id}`}
-          title3={lesson?.name}
-        />
-        <span className="space-30" />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-lg-12 col-xs-12">
-              <div className="shadow6">
-                <div className="padding20 white_bg">
-                  <div className="row">
-                    <div className="col-12 align-self-center">
-                      <div className="row">
-                        <div className="col-lg-9 col-md-8 col-xs-12 align-self-center">
-                          <div className="categories_title">
-                            <h1 style={{ position: "relative" }}>
-                              <span className="p-3">
-                                <img
-                                  src={english_book}
-                                  alt="thumb"
-                                  width={70}
-                                  style={{ marginRight: 20 }}
-                                />
-                                {lesson?.name}
-                              </span>
-                            </h1>
-                          </div>
-                        </div>
-
-                        <div className="col-lg-3 col-md-4 col-xs-12">
-                          <div className=" d-flex justify-content-end pt-3">
-                            <Button
-                              onClick={(event) => {
-                                setIsVisibleVoiceDialog(true);
-                              }}
-                              icon={<em className="icon ni ni-mic"></em>}
-                              className="btn btn-primary"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-20" />
-                      <div className="entertrainment_carousel">
-                        <div className="entertrainment_item">
-                          <div className="row">
-                            <QuestionList
-                              questions={questions}
-                              speak={speak}
-                              voices={voices}
-                              voiceQuestion={voiceQuestion}
-                              voiceAnswer={voiceAnswer}
-                              timeDelay={timeDelay}
-                              speaking={speaking}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <div className="padding20 menu_right">
-                        {questions && questions?.length > 0 && (
-                          <div className="row">
-                            <div className="col-12">
-                              <div className="cpagination">
-                                <nav aria-label="Page navigation example">
-                                  <ul className="pagination">
-                                    <li
-                                      className={`page-item ${
-                                        currentPage === 1 ? "disabled" : ""
-                                      }`}
-                                    >
-                                      <Link
-                                        className="page-link"
-                                        to="#"
-                                        aria-label="Previous"
-                                        onClick={() => {
-                                          setNextPage(
-                                            currentPage === 1
-                                              ? 1
-                                              : currentPage - 1
-                                          );
-                                        }}
-                                      >
-                                        <span aria-hidden="true">
-                                          <FontAwesome name="caret-left" />
-                                        </span>
-                                      </Link>
-                                    </li>
-                                    {showPages()}
-                                    <li
-                                      className={`page-item ${
-                                        currentPage === totalPage
-                                          ? "disabled"
-                                          : ""
-                                      }`}
-                                    >
-                                      <Link
-                                        className="page-link"
-                                        to="#"
-                                        aria-label="Next"
-                                        onClick={() => {
-                                          setNextPage(currentPage + 1);
-                                        }}
-                                      >
-                                        <span aria-hidden="true">
-                                          <FontAwesome name="caret-right" />
-                                        </span>
-                                      </Link>
-                                    </li>
-                                  </ul>
-                                </nav>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div className="container-fluid ">
+      <div className="nk-content-inner">
+        <div className="nk-content-body ">
+          <div className="nk-block-head nk-block-head-sm">
+            <div className="nk-block-between">
+              <div className="nk-block-head-content">
+                <h3 className="nk-block-title page-title">{lesson?.name}</h3>
               </div>
             </div>
           </div>
+          <div className="nk-block">
+            <BreadCrumb
+              className="padding-top-30"
+              title="English Books"
+              link="/english-books"
+              title2={book?.name}
+              link2={`/english-book/${english_book_id}`}
+              title3={lesson?.name}
+            />
+            <div className="space-30"></div>
+            <div className="row">
+              <QuestionList
+                questions={questions}
+                speak={speak}
+                voices={voices}
+                voiceQuestion={voiceQuestion}
+                voiceAnswer={voiceAnswer}
+                timeDelay={timeDelay}
+                speaking={speaking}
+              />
+            </div>
+
+            {questions && questions?.length > 0 && (
+              <div>
+                <ul class="pagination">
+                  <li
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
+                  >
+                    <Link
+                      className="page-link"
+                      to="#"
+                      aria-label="Previous"
+                      onClick={() => {
+                        setNextPage(currentPage === 1 ? 1 : currentPage - 1);
+                      }}
+                    >
+                      <span aria-hidden="true">&laquo;</span>
+                    </Link>
+                  </li>
+
+                  {showPages()}
+
+                  <li
+                    className={`page-item ${
+                      currentPage === totalPage ? "disabled" : ""
+                    }`}
+                  >
+                    <Link
+                      className="page-link"
+                      to="#"
+                      aria-label="Next"
+                      onClick={() => {
+                        setNextPage(currentPage + 1);
+                      }}
+                    >
+                      <span aria-hidden="true">&raquo;</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <div className="space-70" />
-      <VoiceDialog
-        title="Setting Voices"
-        speak={speak}
-        voices={voices}
-        visible={isVisibleVoiceDialog}
-        onClose={setIsVisibleVoiceDialog}
-        onRefresh={onRefreshVoices}
-      />
-    </Fragment>
+    </div>
   );
 };
 

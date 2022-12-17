@@ -203,29 +203,25 @@ function NewEditDevice() {
               </div>
               <div className="nk-block-head-content">
                 <div className="toggle-wrap nk-block-tools-toggle">
-                  <div className="toggle-expand-content">
-                    <ul className="nk-block-tools g-3">
-                      <li className="nk-block-tools-opt">
-                        <Button
-                          label="Save"
-                          className="btn btn-info"
-                          icon={<em className="icon ni ni-save"></em>}
-                          onClick={onSaveDevice}
-                          disabled={isLoading}
-                        />
-                      </li>
-                      <li className="nk-block-tools-opt">
-                        <Button
-                          label="Cancel"
-                          className="btn btn-secondary"
-                          icon={
-                            <em className="icon ni ni-back-arrow-fill"></em>
-                          }
-                          onClick={() => navigate("/admin/devices")}
-                        />
-                      </li>
-                    </ul>
-                  </div>
+                  <ul className="nk-block-tools g-3">
+                    <li className="nk-block-tools-opt">
+                      <Button
+                        label="Save"
+                        className="btn btn-info"
+                        icon={<em className="icon ni ni-save"></em>}
+                        onClick={onSaveDevice}
+                        disabled={isLoading}
+                      />
+                    </li>
+                    <li className="nk-block-tools-opt">
+                      <Button
+                        label="Cancel"
+                        className="btn btn-secondary"
+                        icon={<em className="icon ni ni-back-arrow-fill"></em>}
+                        onClick={() => navigate("/admin/devices")}
+                      />
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

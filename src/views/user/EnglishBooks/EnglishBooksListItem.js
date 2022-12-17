@@ -11,33 +11,23 @@ const EnglishBooksListItem = (props) => {
 
     return url.substring(0, 6) === "images" ? (
       <img
-        className="thumb border rounded p-2"
+        className="card-img-top"
         alt={url}
         src={AppConfig.storageUrl + url}
       />
     ) : (
-      <img className="thumb border rounded p-2" src={url} alt={url} />
+      <img className="card-img-top" src={url} alt={url} />
     );
   };
 
   return (
-    <div className="single_post post_type3 mb30">
-      <div className="post_img">
-        <div className="img_wrap">
-          <Link to={`/english-book/${book?.id}`}>
-            {previewImage(book?.image)}
-          </Link>
-        </div>
-      </div>
-      <div className="single_post_text">
-        <div className="meta3">
-          <Link to="/english-books">English Books</Link>
-        </div>
-        <h4>
+    <div class="card">
+      <Link to={`/english-book/${book?.id}`}>{previewImage(book?.image)}</Link>
+      <div class="card-inner">
+        <h5 class="card-title">
           <Link to={`/english-book/${book?.id}`}>{book?.name}</Link>
-        </h4>
-        <div className="space-10" />
-        <p className="post-p">{book?.description}</p>
+        </h5>
+        <p class="card-text">{book?.description}</p>
       </div>
     </div>
   );

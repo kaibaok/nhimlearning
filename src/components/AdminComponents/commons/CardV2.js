@@ -16,7 +16,6 @@ function Card(props) {
         <div className="card-img-top">
           <ReactPlayer
             width="100%"
-            height="100%"
             url={props.video}
             controls={true}
             alt="img"

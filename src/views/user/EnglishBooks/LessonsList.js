@@ -6,7 +6,7 @@ function LessonsList(props) {
     <Fragment>
       {lessons &&
         lessons.map((item, i) => (
-          <div key={i} className="col-lg-3 col-md-6 col-xs-12">
+          <div key={i} className="col-lg-3 col-md-6 col-xs-12 mb-4">
             <LessonsListItem lesson={item} englishBook={englishBook} />
           </div>
         ))}

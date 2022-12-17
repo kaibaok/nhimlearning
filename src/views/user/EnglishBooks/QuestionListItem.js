@@ -41,14 +41,14 @@ const QuestionListItem = (props) => {
 
     return url.substring(0, 6) === "images" ? (
       <img
-        className="thumb border rounded p-2 mb-2"
+        className="card-img-top cursor_pointer"
         src={AppConfig.storageUrl + url}
         onClick={() => readText({ text: name, isQuestion: false })}
         alt={url}
       />
     ) : (
       <img
-        className="thumb border rounded p-2 mb-2"
+        className="card-img-top cursor_pointer"
         src={url}
         onClick={() => readText({ text: name, isQuestion: false })}
         alt={url}
@@ -149,16 +149,6 @@ const QuestionListItem = (props) => {
 
   return (
     <div className="single_post">
-      <h3 className="padding10 alert alert-primary">
-        <img
-          className="thumb p-2 me-2"
-          src={IconQuestion}
-          width={50}
-          alt={IconQuestion}
-        />
-        {question.name}
-      </h3>
-
       <div className="accordion mb-3">{displayTargetVocabulary()}</div>
       <div className="accordion mb-3">{displayVideos()}</div>
 
@@ -166,14 +156,25 @@ const QuestionListItem = (props) => {
         {answers &&
           answers.map((answer, index) => {
             return (
-              <div className="col-lg-3 col-md-4 col-xs-12 mb-3" key={index}>
-                <div className="card card-bordered">
+              <div className="col-lg-3 col-md-4 col-xs-12 mb-4" key={index}>
+                <div class="card">
+                  {previewImage(answer.image, answer.name)}
+                  <div class="card-inner">
+                    <h5 class="card-title center font30">{answer.name}</h5>
+                    <p class="card-text mb-2">{answer.description}</p>
+                    <Conversation
+                      questions={answer?.questions_arr}
+                      answers={answer?.answers_arr}
+                      readText={readText}
+                      timeDelay={timeDelay}
+                      speaking={speaking}
+                    />
+                  </div>
+                </div>
+
+                {/* <div className="card card-bordered">
                   <div className="card-inner">
-                    {answer.name && (
-                      <h5 className="card-title center font30">
-                        {answer.name}
-                      </h5>
-                    )}
+                  
                     <div className="center">
                       {previewImage(answer.image, answer.name)}
                     </div>
@@ -188,7 +189,7 @@ const QuestionListItem = (props) => {
                       speaking={speaking}
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             );
           })}

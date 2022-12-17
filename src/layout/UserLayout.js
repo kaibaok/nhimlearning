@@ -1,16 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
-import LogoArea from "../components/UserComponents/LogoArea";
-import MainMenu from "../components/UserComponents/MainMenu";
-// import FooterArea from "../components/UserComponents/FooterArea";
-import { ToastContainer } from "react-toastify";
-import ScrollTopButton from "../components/UserComponents/ScrollTopButton";
+import HeaderUser from "../components/UserComponents/header/HeaderUser";
 import { useSpeechSynthesis } from "../components/AdminComponents/commons/Speech";
 
-const UserLayout = (props) => {
+function UserLayout(props) {
   const { component: Component } = props;
   const { speak, voices, speaking } = useSpeechSynthesis();
   const [voicesChosen, setVoiceChosen] = useState();
   const langDefault = "en-US";
+  const [displayNavMobile, setDisplayNavMobile] = useState(false);
 
   useEffect(() => {
     if (voices) {
@@ -20,23 +17,31 @@ const UserLayout = (props) => {
   }, [voices]);
 
   return (
-    <Fragment>
-      <div className={props.parentClass}>
-        <Fragment>
-          <LogoArea className="white_bg" />
-          <MainMenu />
-        </Fragment>
-        <Component
-          {...props}
-          speak={speak}
-          voices={voicesChosen}
-          speaking={speaking}
-        />
-        {/* <FooterArea className="primay_bg" /> */}
-        <ToastContainer position="top-center" />
-        <ScrollTopButton />
+    <div className="nk-body bg-lighter no-touch nk-nio-theme modal-open">
+      <div className="nk-app-root">
+        <div className="nk-wrap ">
+          <HeaderUser
+            setDisplayNavMobile={setDisplayNavMobile}
+            displayNavMobile={displayNavMobile}
+          />
+          <div className="nk-content ">
+            <div className="container-fluid">
+              <div className="nk-content-inner">
+                <div className="nk-content-body">
+                  <Component
+                    {...props}
+                    speak={speak}
+                    voices={voicesChosen}
+                    speaking={speaking}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </Fragment>
+    </div>
   );
-};
+}
+
 export default UserLayout;

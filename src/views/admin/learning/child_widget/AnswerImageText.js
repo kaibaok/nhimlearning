@@ -47,7 +47,7 @@ function AnswerImageText(props) {
   return (
     <>
       <div className="row">
-        <div className="col-xs-12 mb-3">
+        {/* <div className="col-xs-12 mb-3">
           <Button
             className="btn btn-primary"
             style={{ color: "#fff", marginRight: 10 }}
@@ -56,7 +56,7 @@ function AnswerImageText(props) {
             }}
             label="Add Questions &amp; Answers"
           />
-        </div>
+        </div> */}
         <SimpleBar style={{ maxHeight: maxHeight }}>
           {answers &&
             answers.map((answer, index) => (

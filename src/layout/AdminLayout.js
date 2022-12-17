@@ -7,10 +7,7 @@ function AdminLayout(props) {
   const [displayNavMobile, setDisplayNavMobile] = useState(false);
 
   return (
-    <div
-      className="nk-body bg-lighter no-touch nk-nio-theme modal-open"
-      style={{ overflow: "hidden", paddingRight: 17 }}
-    >
+    <div className="nk-body bg-lighter no-touch nk-nio-theme modal-open">
       <div className="nk-app-root">
         <div className="nk-wrap ">
           <HeaderAdmin

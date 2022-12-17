@@ -11,33 +11,27 @@ const LessonsListItem = (props) => {
 
     return url.substring(0, 6) === "images" ? (
       <img
-        className="thumb border rounded p-2"
+        className="card-img-top"
         src={AppConfig.storageUrl + url}
         alt={url}
       />
     ) : (
-      <img className="thumb border rounded p-2" src={url} alt={url} />
+      <img className="card-img-top" src={url} alt={url} />
     );
   };
 
   return (
-    <div className="single_post post_type3 mb30">
-      <div className="post_img">
-        <div className="img_wrap">
+    <div class="card">
+      <Link to={`/lesson/${lesson?.id}/${englishBook?.id}`}>
+        {previewImage(lesson?.image)}
+      </Link>
+      <div class="card-inner">
+        <h5 class="card-title">
           <Link to={`/lesson/${lesson?.id}/${englishBook?.id}`}>
-            {previewImage(lesson?.image)}
+            {lesson?.name}
           </Link>
-        </div>
-      </div>
-      <div className="single_post_text">
-        <div className="meta3">
-          <Link to="/english-lessons">English lessons</Link>
-        </div>
-        <h4>
-          <Link to={`/english-lesson/${lesson?.id}`}>{lesson?.name}</Link>
-        </h4>
-        <div className="space-10" />
-        <p className="post-p">{lesson?.description}</p>
+        </h5>
+        <p class="card-text">{lesson?.description}</p>
       </div>
     </div>
   );

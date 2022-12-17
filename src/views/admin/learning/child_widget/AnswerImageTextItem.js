@@ -112,7 +112,7 @@ function AnswerImageTextItem(props) {
         <div className="col-xs-12 col-lg-3 col-md-12 mb-3">
           <label className="form-label">Answers</label>
           <div className="row">
-            <div className="col-lg-10">
+            <div className="col-lg-10 mb-3">
               <textarea
                 className="form-control no-resize"
                 rows="6"
@@ -133,7 +133,7 @@ function AnswerImageTextItem(props) {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-lg-12 mb-3">
+        {/* <div className="col-xs-12 col-lg-12 mb-3">
           <label className="form-label">Description</label>
           <textarea
             className="form-control no-resize"
@@ -143,7 +143,7 @@ function AnswerImageTextItem(props) {
               editAnswer(event?.target?.value, index, "description");
             }}
           />
-        </div>
+        </div> */}
       </div>
       <MediaDialog
         title="Media"

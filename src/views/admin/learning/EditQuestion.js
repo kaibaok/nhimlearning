@@ -182,6 +182,33 @@ function EditQuestion() {
   return (
     <div className="container-fluid">
       <ToastContainer />
+      <ul class="nk-sticky-toolbar">
+        <li class="demo-layout">
+          <a className="toggle tipinfo" href="#" onClick={onSaveQuestion}>
+            <em className="icon ni ni-save"></em>
+          </a>
+        </li>
+        <li class="demo-thumb">
+          <a
+            className="toggle tipinfo"
+            data-target="demoUC"
+            href="#"
+            onClick={() => navigate("/admin/questions")}
+          >
+            <em className="icon ni ni-back-arrow-fill"></em>
+          </a>
+        </li>
+        <li className="demo-thumb">
+          <a
+            className="toogle tipinfo"
+            onClick={() => {
+              addMoreAnswers();
+            }}
+          >
+            <em className="icon ni ni-more-h-alt"></em>
+          </a>
+        </li>
+      </ul>
       <div className="nk-content-inner">
         <div className="nk-content-body ">
           <div className="nk-block-head nk-block-head-sm">
@@ -190,33 +217,6 @@ function EditQuestion() {
                 <h3 className="nk-block-title page-title">
                   {`${id ? "Edit" : "New"} Question`}
                 </h3>
-              </div>
-              <div className="nk-block-head-content">
-                <div className="toggle-wrap nk-block-tools-toggle">
-                  <div className="toggle-expand-content">
-                    <ul className="nk-block-tools g-3">
-                      <li className="nk-block-tools-opt">
-                        <Button
-                          label="Save"
-                          className="btn btn-info"
-                          icon={<em className="icon ni ni-save"></em>}
-                          onClick={onSaveQuestion}
-                          disabled={isLoading}
-                        />
-                      </li>
-                      <li className="nk-block-tools-opt">
-                        <Button
-                          label="Cancel"
-                          className="btn btn-secondary"
-                          icon={
-                            <em className="icon ni ni-back-arrow-fill"></em>
-                          }
-                          onClick={() => navigate("/admin/questions")}
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -307,7 +307,7 @@ function EditQuestion() {
                     <label className="form-label">Videos</label>
                     <div className="form-control-wrap">
                       <textarea
-                        className="form-control no-resize"
+                        className="form-control no-resize mb-2"
                         onChange={(event) => {
                           setVideos(event.target.value);
                         }}

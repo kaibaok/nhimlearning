@@ -9,7 +9,7 @@ const EnglishBooksList = (props) => {
     <Fragment>
       {books &&
         books.map((item, i) => (
-          <div key={i} className="col-lg-3 col-md-4 col-xs-12">
+          <div key={i} className="col-lg-3 col-md-4 col-xs-12 mb-4">
             <EnglishBooksListItem book={item} />
           </div>
         ))}

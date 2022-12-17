@@ -81,7 +81,7 @@ function Conversation(props) {
     <div>
       {conversation && conversation.length > 0 && (
         <>
-          <div className="dragula-container card card-bordered p-2 h-100">
+          <div className="dragula-container card h-100">
             {conversation.map((item, rowKey) => {
               const active = rowIndex === rowKey || rowSelected === rowKey;
               const rowStyle = rowKey % 2 !== 0 ? "bg-teal" : "bg-azure";

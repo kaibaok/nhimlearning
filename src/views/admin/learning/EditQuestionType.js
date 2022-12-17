@@ -74,6 +74,23 @@ function EditQuestionType() {
   return (
     <div className="container-fluid ">
       <ToastContainer />
+      <ul class="nk-sticky-toolbar">
+        <li class="demo-layout">
+          <a className="toggle tipinfo" href="#" onClick={onSaveQuestionType}>
+            <em className="icon ni ni-save"></em>
+          </a>
+        </li>
+        <li class="demo-thumb">
+          <a
+            className="toggle tipinfo"
+            data-target="demoUC"
+            href="#"
+            onClick={() => navigate("/admin/question-types")}
+          >
+            <em className="icon ni ni-back-arrow-fill"></em>
+          </a>
+        </li>
+      </ul>
       <div className="nk-content-inner">
         <div className="nk-content-body ">
           <div className="nk-block-head nk-block-head-sm">
@@ -82,33 +99,6 @@ function EditQuestionType() {
                 <h3 className="nk-block-title page-title">
                   {`${id ? "Edit" : "New"} Question Type`}
                 </h3>
-              </div>
-              <div className="nk-block-head-content">
-                <div className="toggle-wrap nk-block-tools-toggle">
-                  <div className="toggle-expand-content">
-                    <ul className="nk-block-tools g-3">
-                      <li className="nk-block-tools-opt">
-                        <Button
-                          label="Save"
-                          className="btn btn-info"
-                          icon={<em className="icon ni ni-save"></em>}
-                          onClick={onSaveQuestionType}
-                          disabled={isLoading}
-                        />
-                      </li>
-                      <li className="nk-block-tools-opt">
-                        <Button
-                          label="Cancel"
-                          className="btn btn-secondary"
-                          icon={
-                            <em className="icon ni ni-back-arrow-fill"></em>
-                          }
-                          onClick={() => navigate("/admin/question-types")}
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
