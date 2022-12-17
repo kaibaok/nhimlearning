@@ -76,15 +76,17 @@ function EditQuestionType() {
       <ToastContainer />
       <ul class="nk-sticky-toolbar">
         <li class="demo-layout">
-          <a className="toggle tipinfo" href="#" onClick={onSaveQuestionType}>
+          <a
+            className="toggle tipinfo cursor_pointer"
+            onClick={onSaveQuestionType}
+          >
             <em className="icon ni ni-save"></em>
           </a>
         </li>
         <li class="demo-thumb">
           <a
-            className="toggle tipinfo"
+            className="toggle tipinfo cursor_pointer"
             data-target="demoUC"
-            href="#"
             onClick={() => navigate("/admin/question-types")}
           >
             <em className="icon ni ni-back-arrow-fill"></em>
