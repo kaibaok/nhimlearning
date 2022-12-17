@@ -1,4 +1,4 @@
-const isIP = true;
+const isIP = false;
 const ip = isIP
   ? "http://nhimlearning.local"
   : "https://nhimlearning.000webhostapp.com";
